@@ -1,6 +1,6 @@
 FROM ubuntu:16.10
 
-ANGULAR_CLI_VERSION latest
+ENV ANGULAR_CLI_VERSION latest
 
 RUN apt-get -qq update \
 		&& DEBIAN_FRONTEND=noninteractive apt-get -q install -y curl sudo wget unzip \
