@@ -14,6 +14,6 @@ RUN apt-get -qq update \
 		
 RUN wget -nv https://services.gradle.org/distributions/gradle-3.2.1-bin.zip \
 		&& unzip -q gradle-3.2.1-bin.zip -d /opt/gradle \
-		&& /opt/gradle-3.2.1/gradle -help	&& yarn version 
+		&& /opt/gradle/gradle-3.2.1/gradle -help
 
 RUN yarn global add angular-cli@${ANGULAR_CLI_VERSION}
