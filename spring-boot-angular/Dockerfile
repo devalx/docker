@@ -1,5 +1,7 @@
 FROM ubuntu:16.10
 
+ANGULAR_CLI_VERSION latest
+
 RUN apt-get -qq update \
 		&& DEBIAN_FRONTEND=noninteractive apt-get -q install -y curl sudo wget unzip \
 		&& curl -sL https://deb.nodesource.com/setup_6.x | sudo -E bash - \
@@ -12,8 +14,6 @@ RUN apt-get -qq update \
 		
 RUN wget -nv https://services.gradle.org/distributions/gradle-3.2.1-bin.zip \
 		&& unzip -q gradle-3.2.1-bin.zip -d /opt/gradle \
-		&& export GRADLE_HOME="/opt/gradle/gradle-3.2.1" \
-		&& PATH="$PATH:$GRADLE_HOME/bin" \
-		&& gradle -help	 
+		&& gradle -help	&& yarn version 
 
-RUN yarn global add angular-cli
+RUN yarn global add angular-cli@${ANGULAR_CLI_VERSION}
