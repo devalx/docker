@@ -1,7 +1,7 @@
 FROM ubuntu:16.10
 
 ENV ANGULAR_CLI_VERSION latest
-ENV GRADLE_VERSION 3.2.1
+ENV GRADLE_VERSION 3.4.1 # TODO use this env var
 
 RUN apt-get -qq update \
 		&& DEBIAN_FRONTEND=noninteractive apt-get -q install -y curl sudo wget unzip \
@@ -12,9 +12,9 @@ RUN apt-get -qq update \
 		&& apt-get -q install -y nodejs openjdk-8-jdk yarn \
 		&& apt-get clean \
 		&& rm -rf /var/lib/apt
-		
-RUN wget -nv https://services.gradle.org/distributions/gradle-3.2.1-bin.zip \
-		&& unzip -q gradle-3.2.1-bin.zip -d /opt/gradle \
-		&& /opt/gradle/gradle-3.2.1/bin/gradle -help
 
-RUN yarn global add angular-cli@${ANGULAR_CLI_VERSION}
+RUN wget -nv https://services.gradle.org/distributions/gradle-3.4.1-bin.zip \
+		&& unzip -q gradle-3.4.1-bin.zip -d /opt/gradle \
+		&& /opt/gradle/gradle-3.4.1/bin/gradle -help
+
+RUN yarn global add @angular/cli@${ANGULAR_CLI_VERSION}
