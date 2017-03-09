@@ -1,6 +1,7 @@
 FROM ubuntu:16.10
 
 ENV ANGULAR_CLI_VERSION latest
+ENV GRADLE_VERSION 3.2.1
 
 RUN apt-get -qq update \
 		&& DEBIAN_FRONTEND=noninteractive apt-get -q install -y curl sudo wget unzip \
