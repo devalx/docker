@@ -7,11 +7,10 @@ RUN apt-get update -q \
         && useradd --create-home -u ${STEAM_UID} steam \
         && mkdir -p /home/steam/steamcmd
 
-USER steam
 WORKDIR /home/steam/steamcmd
 
 # Download with ADD
 ADD https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz ./
+RUN tar -xvzf /home/steam/steamcmd/steamcmd_linux.tar.gz && chmod +x /home/steam/steamcmd/steamcmd.sh
 
-# Decompress with ADD
-ADD steamcmd_linux.tar.gz ./
+USER steam
